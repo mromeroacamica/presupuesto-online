@@ -3,7 +3,7 @@ import Error from './Error'
 import shortId from 'shortid'
 
 
-const Formulario = () => {
+const Formulario = ({guardarGasto,guardarCrearGasto}) => {
     const [nombre, guardarNombre]=useState('');
     const [cantidad, guardarCantidad]= useState(0);
     const [error, guardarError]= useState(false);
@@ -26,13 +26,16 @@ const Formulario = () => {
             cantidad,
             id: shortId.generate()
         }
-         console.log(gasto)
+        //  console.log(gasto)
 
 
         //pasar al elemento principal
-
+        guardarGasto(gasto)
+        guardarCrearGasto(true)
 
         //resetear el form
+        guardarNombre('');
+        guardarCantidad(0);
 
     }
 
